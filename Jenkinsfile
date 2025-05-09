@@ -1,14 +1,10 @@
-@Library('my-shared-library') _
+@Library('my-shared-library')
 
 pipeline{
 
     agent any
     //agent { label 'Demo' }
 
-    environment {
-        GIT_USERNAME = credentials('pritidokania17@gmail.com')
-        GIT_TOKEN = credentials('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')
-    }
     parameters{
 
         choice(name: 'action', choices: 'create\ndelete', description: 'Choose create/Destroy')
@@ -24,7 +20,7 @@ pipeline{
             steps{
             gitCheckout(
                 branch: "main",
-                url: "https://${GIT_USERNAME}:${GIT_TOKEN}@github.com/pritidokania17/JenkinsProject.git"
+                url: "https://github.com/pritidokania17/JenkinsProject.git"
             )
             }
         }
